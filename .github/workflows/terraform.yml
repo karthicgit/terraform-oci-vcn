@@ -18,4 +18,4 @@ jobs:
     - name:                    Checkout
       uses:                    actions/checkout@master
     - name:                    Terraform Apply
-      uses:                    "karthicgit/terraform-oci-vcn/actions/terraform-apply@master"
+      uses:                    "terraform-oci-vcn/terraform-oci-vcn/actions/terraform-apply@master"
