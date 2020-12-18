@@ -50,3 +50,5 @@ jobs:
     - name: Test
       working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       run: sudo go test -v
+      env:
+        TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
