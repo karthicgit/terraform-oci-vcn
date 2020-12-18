@@ -18,7 +18,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 			"internet_gateway_enabled": false,
 			"vcn_cidr": "10.0.0.0/16",
 		},
-	}
+	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
 	//defer terraform.Destroy(t, terraformOptions)
