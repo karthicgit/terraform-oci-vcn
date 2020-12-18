@@ -13,6 +13,10 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../",
+		Vars: map[string]interface{}{
+			"region": "us-ashburn-1",
+			"internet_gateway_enabled": false,
+			"vcn_cidr": "10.0.0.0/16"
 	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
