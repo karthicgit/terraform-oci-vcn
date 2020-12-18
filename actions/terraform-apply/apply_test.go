@@ -3,13 +3,7 @@ package test
 import (
 	"fmt"
 	"testing"
-	"time"
-
-	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
-
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/gruntwork-io/terratest/modules/ssh"
-	"github.com/gruntwork-io/terratest/modules/shell"
 )
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
