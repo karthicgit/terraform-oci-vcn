@@ -10,7 +10,7 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     env:
-      TF_VAR_compartment_ocid: ${{ secrets.TF_VAR_compartment_ocid }}
+      TF_VAR_compartment_id: ${{ secrets.TF_VAR_compartment_ocid }}
       TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
       TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
       TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
