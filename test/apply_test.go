@@ -17,6 +17,8 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 			"region": "us-ashburn-1",
 			"internet_gateway_enabled": false,
 			"vcn_cidr": "10.0.0.0/16",
+			"vcn_dns_label": "vcn",
+			"vcn_name": "testvcn",
 		},
 	})
 
