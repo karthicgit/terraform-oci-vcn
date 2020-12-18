@@ -31,7 +31,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 	// Run `terraform output` to get the IP of the instance
 	//bastionIp := terraform.Output(t, terraformOptions, "bastion_public_ip")
 
-	// Make   sure we get back a 200 OK with the body "Hello, World!"
+	// Make   we get back a 200 OK with the body "Hello, World!"
 	//fmt.Println(bastionIp)
 // 	shell.RunCommandAndGetStdOut(t *testing.T,command )
  }
