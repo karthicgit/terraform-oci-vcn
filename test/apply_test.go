@@ -2,7 +2,6 @@ package test
 
 import (
 	"testing"
-	"fmt"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
@@ -27,12 +26,12 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 	//defer terraform.Destroy(t, terraformOptions)
 
 	// Run `terraform init` and `terraform apply`. Fail the test if there are any errors.
-	//terraform.InitAndPlan(t, terraformOptions)
+	terraform.InitAndPlan(t, terraformOptions)
 
 	// Run `terraform output` to get the IP of the instance
 	//bastionIp := terraform.Output(t, terraformOptions, "bastion_public_ip")
 
 	// Make   we get back a 200 OK with the body "Hello, World!"
-	fmt.Println(env)
+	
 // 	shell.RunCommandAndGetStdOut(t *testing.T,command )
  }
