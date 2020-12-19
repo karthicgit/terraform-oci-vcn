@@ -19,14 +19,11 @@ jobs:
     steps:
     - name: Check out code  
       uses: actions/checkout@v1
-
-    - name: environment
-      run: echo ${{ secrets.TF_VAR_compartment_ocid }}
     
-    - name: Set up Go 1.13
+    - name: Set up Go 1.15
       uses: actions/setup-go@v1
       with:
-        go-version: 1.13
+        go-version: 1.15
       id: go
 
     - name: Get dependencies
@@ -37,3 +34,7 @@ jobs:
         else
           go get -v -d -t ./...  
         fi
+        
+    - name: Test
+      working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
+      run: sudo go test -v
