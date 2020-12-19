@@ -20,17 +20,8 @@ jobs:
     - name: Check out code  
       uses: actions/checkout@v1
 
-    - name: Run a Terraform init  
-      uses: docker://hashicorp/terraform:0.13.5
-      with:
-        entrypoint: terraform
-        args: init
-
-    - name: Run a Terraform validate    
-      uses: docker://hashicorp/terraform:0.13.5
-      with:
-        entrypoint: terraform
-        args: validate
+    - name: environment
+      run: echo $TF_VAR_compartment_id
     
     - name: Set up Go 1.13
       uses: actions/setup-go@v1
@@ -46,9 +37,3 @@ jobs:
         else
           go get -v -d -t ./...  
         fi
-
-    - name: Test
-      working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
-      run: sudo go test -v
-      env:
-        TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
