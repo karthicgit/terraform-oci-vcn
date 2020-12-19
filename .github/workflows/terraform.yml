@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: environment
-      run: echo $TF_VAR_compartment_id
+      run: echo ${{ secrets.TF_VAR_compartment_ocid }}
     
     - name: Set up Go 1.13
       uses: actions/setup-go@v1
