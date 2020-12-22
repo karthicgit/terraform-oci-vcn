@@ -20,7 +20,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 			"vcn_cidr": "10.0.0.0/16",
 			"vcn_dns_label": "vcn",
 			"vcn_name": "testvcn",
-			"compartment_id": os.Getenv(TF_VAR_compartment_id),
+			"compartment_id": os.Getenv("TF_VAR_compartment_id"),
 		},
 	})
 
