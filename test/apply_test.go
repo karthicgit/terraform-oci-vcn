@@ -32,6 +32,7 @@ func TestOci(t *testing.T) {
 			"fingerprint": fingerprint,
 			"private_key" : private_key,
 			"user_ocid" : user_ocid,
+			"private_key_path" : "",
 		},
 		
 	})
