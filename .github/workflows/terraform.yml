@@ -34,8 +34,10 @@ jobs:
         else
           go get -v -d -t ./...  
         fi
-        
-        
+    
+    - name: dummy
+      run: echo "${TF_VAR_private_key}" > ${GITHUB_WORKSPACE}/oci.pem 
+      
     - name: Terratest
       working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       env:
@@ -45,4 +47,5 @@ jobs:
         TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
         TF_VAR_user_ocid:        ${{ secrets.TF_VAR_user_ocid }}
         TF_VAR_region:           ${{ secrets.TF_VAR_region }}
+        TF_VAR_private_key_path: ${{GITHUB_WORKSPACE}/oci.pem
       run: sudo go test -v
