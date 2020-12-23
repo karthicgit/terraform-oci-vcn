@@ -17,6 +17,9 @@ func TestOci(t *testing.T) {
 	fingerprint := os.Getenv("TF_VAR_fingerprint")
 	private_key := os.Getenv("TF_VAR_private_key")
 	user_ocid := os.Getenv("TF_VAR_user_ocid")
+	private_key_path := os.Getenv("TF_VAR_private_key_path")
+	
+	fmt.Println(private_key_path)
 	
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// The path to where our Terraform code is located
@@ -32,7 +35,7 @@ func TestOci(t *testing.T) {
 			"fingerprint": fingerprint,
 			"private_key" : private_key,
 			"user_ocid" : user_ocid,
-			"private_key_path" : "",
+			"private_key_path" : private_key_path,
 		},
 		
 	})
