@@ -35,6 +35,16 @@ jobs:
           go get -v -d -t ./...  
         fi
         
+    - name: 'Write provider file'
+      run: |
+        cd  /home/runner/work/terraform-oci-vcn/terraform-oci-vcn
+        touch provider.tf
+        echo "tenancy_ocid=${{secrets.TF_VAR_TENANCY_OCID}}" >> ./provider.tf
+        echo "user_ocid=${{secrets.TF_VAR_USER_OCID}}" >> ./provider.tf
+        echo "fingerprint=${{secrets.TF_VAR_FINGERPRINT}}" >> ./provider.tf
+        echo "region=${{secrets.TF_VAR_REGION}}" >> ./provider.tf
+        echo "private_key=${{secrets.TF_VAR_PRIVATE_KEY}}" >> ./provider.tf
+    
     - name: Test
       working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       env:
