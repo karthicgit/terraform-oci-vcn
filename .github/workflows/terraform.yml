@@ -35,8 +35,12 @@ jobs:
           go get -v -d -t ./...  
         fi
         
-    
-    
+    - name: Export
+      run: |
+        export TF_VAR_compartment_id=${{secrets.TF_VAR_compartment_ocid}}
+        export TF_VAR_private_key=${{secrets.TF_VAR_private_key}}
+        export TF_VAR_fingerprint=${{secrets.TF_VAR_fingerprint}}
+      
     - name: Terratest
       working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       env:
