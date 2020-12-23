@@ -4,6 +4,7 @@ import (
 	"testing"
 	"os"
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"fmt"
 )
 
 func TestOCI(t *testing.T) {
@@ -29,7 +30,7 @@ func TestOCI(t *testing.T) {
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
 	//defer terraform.Destroy(t, terraformOptions)
-
+	fmt.Println(os.Environ())
 	// Run `terraform init` and `terraform apply`. Fail the test if there are any errors.
 	terraform.InitAndPlan(t, terraformOptions)
 
