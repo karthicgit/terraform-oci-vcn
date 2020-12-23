@@ -11,6 +11,8 @@ func TestOCI(t *testing.T) {
 
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
+	compartment_id := os.Getenv("TF_VAR_compartment_id")
+	
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../",
@@ -20,8 +22,9 @@ func TestOCI(t *testing.T) {
 			"vcn_cidr": "10.0.0.0/16",
 			"vcn_dns_label": "vcn",
 			"vcn_name": "testvcn",
-			"compartment_id": os.Getenv("TF_VAR_compartment_id"),
+			"compartment_id": compartment_id,
 		},
+		
 	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
