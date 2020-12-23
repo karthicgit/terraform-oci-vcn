@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-func TestOCI(t *testing.T) {
+func TerratestOCI(t *testing.T) {
 	t.Parallel()
 
 	// Construct the terraform options with default retryable errors to handle the most common
