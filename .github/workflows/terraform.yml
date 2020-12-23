@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
-      TF_VAR_private_key_path: $GITHUB_WORKSPACE/oci.pem
       TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
       TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
       TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
@@ -35,6 +34,10 @@ jobs:
         else
           go get -v -d -t ./...  
         fi
+        
+    - name: dummy
+      run: |
+        echo "${TF_VAR_private_key}" > ${GITHUB_WORKSPACE}/oci.pem
         
     - name: Terratest
       working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
