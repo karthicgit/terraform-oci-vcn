@@ -19,6 +19,6 @@ jobs:
       TF_VAR_region:           ${{ secrets.TF_VAR_region }}
     steps:
     - name:                    Checkout
-      uses:                    actions/checkout@master
+      uses:                    actions/checkout@v1
     - name:                    Terraform Apply
-      uses:                    "terraform-oci-vcn/terraform-oci-vcn/test@master"
+      uses:                    "terraform-oci-vcn/terraform-oci-vcn/actions/terraform-apply@master"
