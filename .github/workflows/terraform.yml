@@ -21,4 +21,5 @@ jobs:
     - name:                    Checkout
       uses:                    actions/checkout@v1
       
-    
+   - name: dummy
+     uses: "terraform-oci-vcn/terraform-oci-vcn/actions/terraform-apply@master"
