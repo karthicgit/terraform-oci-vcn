@@ -5,8 +5,8 @@ apt-get update
 apt install -y build-essential unzip go-dep
 
 #Installing terraform and upgrading code to Terraform 12
-wget -q https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip
-unzip terraform_0.12.10_linux_amd64.zip -d /usr/bin
+wget -q https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_arm64.zip
+unzip terraform_0.13.5_linux_arm64.zip -d /usr/bin
 terraform init
 
 #Set up environment for running terratest in go
@@ -21,7 +21,7 @@ cd $HOME/go/src/terratest/test
 cat  << EOF > Gopkg.toml
 [[constraint]]
   name = "github.com/gruntwork-io/terratest"
-  version = "0.19.1"
+  version = "0.31.2"
 EOF
 
 dep ensure
@@ -29,6 +29,6 @@ dep ensure
 #Set up environment to run the terraform code
 echo "${TF_VAR_private_key}" > ${GITHUB_WORKSPACE}/oci.pem
 export TF_VAR_private_key_path=${GITHUB_WORKSPACE}/oci.pem
-export TF_ACTION_WORKING_DIR=${GITHUB_WORKSPACE}/${LISTING_DIR}
+export TF_ACTION_WORKING_DIR=${GITHUB_WORKSPACE}
 
 go test -v $HOME/go/src/terratest/test/apply_test.go -timeout 20m
