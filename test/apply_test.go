@@ -49,7 +49,7 @@ func TestOci(t *testing.T) {
 	// Run `terraform output` to get the IP of the instance
 	//bastionIp := terraform.Output(t, terraformOptions, "bastion_public_ip")
 
-	// Make  back a 200 OK with the body "Hello, World!"
+	// Make  00 OK with the body "Hello, World!"
 	
 // 	shell.RunCommandAndGetStdOut(t *testing.T,command )
  }
