@@ -17,6 +17,7 @@ jobs:
       TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
       TF_VAR_user_ocid:        ${{ secrets.TF_VAR_user_ocid }}
       TF_VAR_region:           ${{ secrets.TF_VAR_region }}
+  
     steps:
     - name:                    Checkout
       uses:                    actions/checkout@v1
@@ -39,7 +40,7 @@ jobs:
     - name: Terratest
       #working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       run: cd /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test && sudo go test -v
-      with:
+      env:
         TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
         TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
         TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
