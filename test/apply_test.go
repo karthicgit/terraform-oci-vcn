@@ -19,7 +19,7 @@ func TestOci(t *testing.T) {
 	user_ocid := os.Getenv("TF_VAR_user_ocid")
 	private_key_path := os.Getenv("TF_VAR_private_key_path")
 	
-	//fmt.Println(private_key_path)
+	fmt.Println(private_key_path)
 	
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// The path to where our Terraform code is located
