@@ -12,12 +12,12 @@ func TestOci(t *testing.T) {
 
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
-	//compartment_id := os.Getenv("TF_VAR_compartment_id")
-	//tenancy_ocid := os.Getenv("TF_VAR_tenancy_ocid")
-	//fingerprint := os.Getenv("TF_VAR_fingerprint")
-	//private_key := os.Getenv("TF_VAR_private_key")
-	//user_ocid := os.Getenv("TF_VAR_user_ocid")
-	//private_key_path := os.Getenv("TF_VAR_private_key_path")
+	compartment_id := os.Getenv("TF_VAR_compartment_id")
+	tenancy_ocid := os.Getenv("TF_VAR_tenancy_ocid")
+	fingerprint := os.Getenv("TF_VAR_fingerprint")
+	private_key := os.Getenv("TF_VAR_private_key")
+	user_ocid := os.Getenv("TF_VAR_user_ocid")
+	private_key_path := os.Getenv("TF_VAR_private_key_path")
 	
 	//fmt.Println(private_key_path)
 	
@@ -37,7 +37,14 @@ func TestOci(t *testing.T) {
 			//"user_ocid" : user_ocid,
 			//"private_key_path" : private_key_path,
 		},
-		
+		EnvVars: map[string]string{
+			"TF_VAR_compartment_id": compartment_id,
+			"TF_VAR_tenancy_ocid": tenancy_ocid,
+			"TF_VAR_fingerprint": fingerprint,
+			"TF_VAR_private_key": private_key,
+			"TF_VAR_user_ocid": user_ocid,
+			"TF_VAR_private_key_path": private_key_path,
+		},
 	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
