@@ -17,9 +17,9 @@ func TestOci(t *testing.T) {
 	fingerprint := os.Getenv("TF_VAR_fingerprint")
 	private_key := os.Getenv("TF_VAR_private_key")
 	user_ocid := os.Getenv("TF_VAR_user_ocid")
-	private_key_path := os.Getenv("TF_VAR_private_key_path")
+	//private_key_path := os.Getenv("TF_VAR_private_key_path")
 	
-	fmt.Println(private_key_path)
+	//fmt.Println(private_key_path)
 	
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// The path to where our Terraform code is located
@@ -43,13 +43,13 @@ func TestOci(t *testing.T) {
 			"TF_VAR_fingerprint": fingerprint,
 			"TF_VAR_private_key": private_key,
 			"TF_VAR_user_ocid": user_ocid,
-			"TF_VAR_private_key_path": private_key_path,
+			//"TF_VAR_private_key_path": private_key_path,
 		},
 	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
 	//defer terraform.Destroy(t, terraformOptions)
-	fmt.Println(os.Environ())
+	fmt.Println("karthi" os.Environ())
 	// Run `terraform init` and `terraform apply`. Fail the test if there are any errors.
 	terraform.InitAndPlan(t, terraformOptions)
 
