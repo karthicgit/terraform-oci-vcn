@@ -20,7 +20,7 @@ func TestOci(t *testing.T) {
 	//private_key_path := os.Getenv("TF_VAR_private_key_path")
 	
 	fmt.Println(compartment_id)
-	fmt.Println("compartment")
+	fmt.Println("printcompartment")
 	fmt.Println(os.Environ())
 	
 	
