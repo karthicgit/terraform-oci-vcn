@@ -10,13 +10,13 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     env:
-      TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
-      TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
-      TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
+      TF_VAR_compartment_id:   ${{ secrets.TF_VAR_COMPARTMENT_OCID }}
+      TF_VAR_fingerprint:      ${{ secrets.TF_VAR_FINGERPRINT }}
+      TF_VAR_private_key:      ${{ secrets.TF_VAR_PRIVATE_KEY }}
       #TF_VAR_private_key_path: $GITHUB_WORKSPACE/oci.pem
-      TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
-      TF_VAR_user_ocid:        ${{ secrets.TF_VAR_user_ocid }}
-      TF_VAR_region:           ${{ secrets.TF_VAR_region }}
+      TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_TENANCY_OCID }}
+      TF_VAR_user_ocid:        ${{ secrets.TF_VAR_USER_OCID }}
+      TF_VAR_region:           ${{ secrets.TF_VAR_REGION }}
   
     steps:
     - name:                    Checkout
@@ -26,7 +26,6 @@ jobs:
       uses: actions/setup-go@v1
       with:
         go-version: 1.14
-      id: go
 
     - name: Get dependencies
       run: |
@@ -38,14 +37,6 @@ jobs:
         fi
       
     - name: Terratest
-      #working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
-      run: cd /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test && sudo go test -v
-      env:
-        TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
-        TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
-        TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
-        #TF_VAR_private_key_path: $GITHUB_WORKSPACE/oci.pem
-        TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
-        TF_VAR_user_ocid:        ${{ secrets.TF_VAR_user_ocid }}
-        TF_VAR_region:           ${{ secrets.TF_VAR_region }}
+      working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
+      run: sudo go test -v
       
