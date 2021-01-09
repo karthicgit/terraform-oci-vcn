@@ -10,21 +10,30 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     env:
-      TF_VAR_compartment_id:   ${{ secrets.TF_VAR_COMPARTMENT_OCID }}
-      TF_VAR_fingerprint:      ${{ secrets.TF_VAR_FINGERPRINT }}
-      TF_VAR_private_key:      ${{ secrets.TF_VAR_PRIVATE_KEY }}
+      TF_VAR_compartment_id:   ${{ secrets.TF_VAR_compartment_ocid }}
+      TF_VAR_fingerprint:      ${{ secrets.TF_VAR_fingerprint }}
+      TF_VAR_private_key:      ${{ secrets.TF_VAR_private_key }}
       #TF_VAR_private_key_path: $GITHUB_WORKSPACE/oci.pem
-      TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_TENANCY_OCID }}
-      TF_VAR_user_ocid:        ${{ secrets.TF_VAR_USER_OCID }}
-      TF_VAR_region:           ${{ secrets.TF_VAR_REGION }}
+      TF_VAR_tenancy_ocid:     ${{ secrets.TF_VAR_tenancy_ocid }}
+      TF_VAR_user_ocid:        ${{ secrets.TF_VAR_user_ocid }}
+      TF_VAR_region:           ${{ secrets.TF_VAR_region }}
   
     steps:
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-        path: go/src/github.com/karthicgit/terraform-oci-vcn
+      uses: actions/checkout@v2
       
+        
+    - name: 'Write Config & Key Files'
+      run: |
+        mkdir ~/.oci
+        echo "[DEFAULT]" >> ~/.oci/config
+        echo "user=${{secrets.TF_VAR_user_ocid}}" >> ~/.oci/config
+        echo "fingerprint=${{secrets.TF_VAR_fingerprint}}" >> ~/.oci/config
+        echo "region=${{ secrets.TF_VAR_region }}" >> ~/.oci/config
+        echo "tenancy=${{ secrets.TF_VAR_tenancy_ocid }}" >> ~/.oci/config
+        echo "key_file=~/.oci/key.pem" >> ~/.oci/config
+        echo "${{ secrets.TF_VAR_private_key }}" >> ~/.oci/key.pem  
+        
     - name: Set up Go 1.14
       uses: actions/setup-go@v2
       with:
@@ -48,8 +57,6 @@ jobs:
         echo ${GOROOT}
           
     - name: Terratest
-      #working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
+      working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       run: sudo go test -v
-      env:
-        GOPATH: /home/runner/work/terraform-oci-vcn/go
       
