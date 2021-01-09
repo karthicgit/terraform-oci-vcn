@@ -12,7 +12,7 @@ func TestOci(t *testing.T) {
 
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
-	//compartment_id := os.Getenv("TF_VAR_compartment_id")
+	compartment_id := os.Getenv("TF_VAR_compartment_id")
 	//tenancy_ocid := os.Getenv("TF_VAR_tenancy_ocid")
 	//fingerprint := os.Getenv("TF_VAR_fingerprint")
 	//private_key := os.Getenv("TF_VAR_private_key")
@@ -33,7 +33,7 @@ func TestOci(t *testing.T) {
 			"vcn_cidr": "10.0.0.0/16",
 			"vcn_dns_label": "testvcn",
 			"vcn_name": "testvcn",
-			//"compartment_id": compartment_id,
+			"compartment_id": compartment_id,
 			//"tenancy_ocid": tenancy_ocid,
 			//"fingerprint": fingerprint,
 			//"private_key" : private_key,
