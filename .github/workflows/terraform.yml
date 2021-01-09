@@ -29,10 +29,11 @@ jobs:
         echo "[DEFAULT]" >> ~/.oci/config
         echo "user=${{secrets.TF_VAR_user_ocid}}" >> ~/.oci/config
         echo "fingerprint=${{secrets.TF_VAR_fingerprint}}" >> ~/.oci/config
-        echo "region=${{ secrets.TF_VAR_region }}" >> ~/.oci/config
-        echo "tenancy=${{ secrets.TF_VAR_tenancy_ocid }}" >> ~/.oci/config
+        echo "compartment_id=${{secrets.TF_VAR_compartment_ocid}}" >> ~/.oci/config 
+        echo "region=${{secrets.TF_VAR_region}}" >> ~/.oci/config
+        echo "tenancy=${{secrets.TF_VAR_tenancy_ocid}}" >> ~/.oci/config
         echo "key_file=~/.oci/key.pem" >> ~/.oci/config
-        echo "${{ secrets.TF_VAR_private_key }}" >> ~/.oci/key.pem  
+        echo "${{secrets.TF_VAR_private_key}}" > ~/.oci/key.pem  
         
     - name: Set up Go 1.14
       uses: actions/setup-go@v2
