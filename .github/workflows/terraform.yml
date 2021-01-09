@@ -19,8 +19,11 @@ jobs:
       TF_VAR_region:           ${{ secrets.TF_VAR_REGION }}
   
     steps:
-    - name:                    Checkout
-      uses:                    actions/checkout@v1
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+        path: go/src/github.com/karthicgit/terraform-oci-vcn
       
     - name: Set up Go 1.14
       uses: actions/setup-go@v2
@@ -36,7 +39,17 @@ jobs:
           go get -v -d -t ./...  
         fi
       
+    - name: Debug
+      run: |
+        pwd
+        echo ${HOME}
+        echo ${GITHUB_WORKSPACE}
+        echo ${GOPATH}
+        echo ${GOROOT}
+          
     - name: Terratest
-      working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
+      #working-directory: /home/runner/work/terraform-oci-vcn/terraform-oci-vcn/test
       run: sudo go test -v
+      env:
+        GOPATH: /home/runner/work/terraform-oci-vcn/go
       
