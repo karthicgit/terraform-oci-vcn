@@ -31,7 +31,7 @@ func TestOci(t *testing.T) {
 			"region": "ap-mumbai-1",
 			"internet_gateway_enabled": false,
 			"vcn_cidr": "10.0.0.0/16",
-			"vcn_dns_label": "vcn",
+			"vcn_dns_label": "testvcn",
 			"vcn_name": "testvcn",
 			//"compartment_id": compartment_id,
 			//"tenancy_ocid": tenancy_ocid,
