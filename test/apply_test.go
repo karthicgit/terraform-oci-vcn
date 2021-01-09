@@ -40,14 +40,14 @@ func TestOci(t *testing.T) {
 			//"user_ocid" : user_ocid,
 			//"private_key_path" : private_key_path,
 		},
-		EnvVars: map[string]string{
-			"TF_VAR_compartment_id": compartment_id,
-			"TF_VAR_tenancy_ocid": tenancy_ocid,
-			"TF_VAR_fingerprint": fingerprint,
-			"TF_VAR_private_key": private_key,
-			"TF_VAR_user_ocid": user_ocid,
+		//EnvVars: map[string]string{
+		//	"TF_VAR_compartment_id": compartment_id,
+		//	"TF_VAR_tenancy_ocid": tenancy_ocid,
+		//	"TF_VAR_fingerprint": fingerprint,
+		//	"TF_VAR_private_key": private_key,
+		//	"TF_VAR_user_ocid": user_ocid,
 			//"TF_VAR_private_key_path": private_key_path,
-		},
+		//},
 	})
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created.
